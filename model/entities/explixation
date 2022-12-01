@@ -1,0 +1,10 @@
+On ne manipulera plus des tableaux dans les vues, mais bien des objets (ou des collections d'objets), c'est pourquoi on trouve un dossier Entity toujours dans le dossier Model. Il sera très important de respecter certaines règles concernant les entités mais aussi les tables de la BDD :
+
+-- Les Entities portent le même nom que les tables en BDD
+
+-- Dans la BDD, les clés primaires sont sous la forme id_[nom de la table] (id_post, id_topic, id_user, ...)
+
+-- Dans la BDD, les clés étrangères par contre seront sous la forme inverse (topic_id, post_id, user_id)
+
+
+-- Dans les Entities, les propriétés portent le même nom que les champs de la base de données, sauf pour la clé primaire et les clés étrangères où on enlève le "_id" ou "id_"

@@ -1,0 +1,18 @@
+-- ici
+
+-- contient toutes les classes génériques nous permettant d'optimiser les méthodes qui reviennent le plus souvent (connexion à la base de données, classes abstraites pour les différentes requêtes qu'on aura à effectuer, gestion de la session (notamment pour la connexion), hydratation des entités, ...)
+
+-- يحتوي على جميع الفئات العامة التي تسمح لنا بتحسين الطرق التي تظهر في أغلب الأحيان (الاتصال بقاعدة البيانات ، والفئات المجردة للاستعلامات المختلفة التي سيتعين علينا تنفيذها ، وإدارة الجلسة (خاصة بالنسبة للاتصال) ، وترطيب الكيانات ، ...)
+
+
+-- L es classes abstraites sont des classes qui contient au moins une méthode abstraite. Les classes abstraites en PHP sont déclarées à l’aide du mots-clés abstract. Toutes les classes de base implémentant la classe abstraite doivent donner une implémentation des méthodes abstraites déclarées dans la classe mère.
+
+-- الفئات المجردة هي فئات تحتوي على طريقة مجردة واحدة على الأقل. يتم الإعلان عن الفئات المجردة في PHP باستخدام الكلمة الرئيسية المجردة. يجب أن توفر جميع الفئات الأساسية التي تنفذ الفئة المجردة تطبيقا للطرق المجردة المعلنة في الفئة الأصل.
+
+
+-- Quand on vous parle d'hydratation, c'est qu'on parle d'"objet à hydrater". Hydrater un objet, c'est tout simplement lui apporter ce dont il a besoin pour fonctionner. En d'autres termes plus précis, hydrater un objet revient à lui fournir des données correspondant à ses attributs pour qu'il assigne les valeurs souhaitées à ces derniers. L'objet aura ainsi des attributs valides et sera en lui-même valide. On dit que l'objet a ainsi été hydraté.
+
+
+
+
+-- عندما نتحدث عن الترطيب ، فذلك لأننا نتحدث عن "كائن للترطيب". ترطيب كائن ما هو ببساطة جلب ما يحتاجه للعمل. وبعبارة أخرى ، بتعبير أدق ، فإن ترطيب كائن ما يعادل تزويده بالبيانات المقابلة لسماته بحيث يعين القيم المطلوبة لهم. سيؤدي ذلك إلى إعطاء الكائن سمات صالحة وسيكون صالحا في حد ذاته. يقال أن الجسم قد تم ترطيبه بهذه الطريقة.

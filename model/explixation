@@ -1,0 +1,3 @@
+
+ici
+Contrairement à Cinéma, les requêtes ne seront pas dans les controllers mais dans les Managers (namespace Model)
