@@ -5,7 +5,8 @@
     use App\Session;
     use App\AbstractController;
     use App\ControllerInterface;
-    use Model\Managers\TopicManager;
+use Model\Entities\Categorie;
+use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
     use Model\Managers\CategorieManager;
     use Model\Managers\AuteurManager;
@@ -16,7 +17,7 @@
         public function index(){}
 
 
-      
+    //note : le nom de notre function ici c'est le lien qui on dois utiliser  
     
    public function listCategories(){
 
@@ -28,6 +29,23 @@
             "categories" => $categorieManager->findAll(["nomCategorie", "DESC"])
         ]
     ];
+
+}
+
+public function afficherTopics(){
+    $afficherTopics = new TopicManager(); 
+ 
+
+    return [
+        "view" => VIEW_DIR."forum/topics.php",
+        "data" =>[
+            "topics" => $afficherTopics->afficherLesTopics()
+           
+
+        ]
+    
+        ];
+       
 
 }
 
@@ -64,15 +82,90 @@ public function listPosts(){
         ]
         
     ];
+}
 
+public function afficherLesPost(){
+    $afficherPost = new PostManager();
 
+    return [
+        "view"=>VIEW_DIR."forum/posts.php",
+        "data"=>[
+            "post"=>$afficherPost->afficherLesPost()
+        ]
+        ];
+     
 
 }
 
+public function ajouterTopic(){
+
+    $id =(isset($_GET['id']))? $_GET['id'] : null ;
+
+    $ajouterTopic = new TopicManager();
+    $message = new PostManager() ;
+
+
+    
+   
+
+
+    if(isset($_POST['submit'])){
+
+        $titre =filter_input(INPUT_POST,"name",FILTER_SANITIZE_SPECIAL_CHARS) ;
+        $message=filter_input(INPUT_POST,"message",FILTER_SANITIZE_SPECIAL_CHARS) ;
+       
+      
+        
+
+        if($titre && $message){
+
+         $ajouter=["titre"=>$titre,"categorie_id"=>$id,'auteur_id'=>2];
+
+         $ajouterMessage=$ajouterTopic->add($ajouter);
+         
+
+         $ajouter =["texte"=>$message,"topic_id"=>$ajouterMessage,'auteur_id'=>3];
+
+
+         $message->add($ajouter);
+
+        }
+   
+
+
+    }    
+    
+    }
 
 
 
-   }
+    public function ajouterPost(){
+        $id =(isset($_GET['id']))? $_GET['id'] : null ;
+
+        $ajouterPost = new PostManager() ; 
+
+        if(isset($_POST['submit'])){
+            $texte =filter_input(INPUT_POST,'name',FILTER_SANITIZE_SPECIAL_CHARS) ;
+            if($texte){
+                $ajouter=["texte"=>$texte ,"topic_id"=>$id,"auteur_id"=>3];
+                $ajouterPost->add($ajouter);
+            }
+        }
+
+        header("Location:index.php?action=");
+
+
+
+
+
+    }
+   
+    }
+
+
+
+
+   
 
 
 

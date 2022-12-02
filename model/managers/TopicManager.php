@@ -22,19 +22,31 @@ class TopicManager extends Manager
     {
        
         $sql = "
-            SELECT titre
-            FROM $this->tableName
-            
+            SELECT titre,id_topic
+            FROM ".$this->tableName."
             WHERE categorie_id = :id
             ";
-           
-          
 
-        return $this->getMultipleResults(
+            return $this->getMultipleResults(
             DAO::select($sql, ['id' => $id]),
             $this->className
         );
     }
+
+
+    public function afficherLesTopics(){
+
+        $sql = "
+        SELECT titre FROM ".$this->tableName."
+        ";
+        return $this->getMultipleResults(
+            DAO::select($sql),
+             $this->className);
+
+    }
+
+  
+
  
 }
 

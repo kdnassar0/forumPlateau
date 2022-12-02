@@ -10,30 +10,38 @@
     //manager dans app (manager.php)
 
     protected $className = "Model\Entities\Post"; //nom da class entities (post.php)
-    protected $tableName = "post"; //nom de table
+    protected $tableName = "post"; //nom de table dans la base de donnes 
     
     public function __construct(){
         parent::connect();
 
     }
 
-        public function listPostParTopics($id){
+
+    public function  afficherLesPost(){
+        $sql = "
+        SELECT texte,dateCreation FROM ".$this->tableName."
+    " ;
+    return $this->getMultipleResults(
+        DAO::select($sql),
+        $this->className 
+    );
+
+    }
+
+        public function listPostParTopics($id){ 
 
             $sql = "
-            SELECT *
-            FROM $this->tableName
+            SELECT texte
+            FROM ".$this->tableName."
             WHERE topic_id = :id
             " ;
-        
             
-         
             return $this->getMultipleResults(
                 DAO::select($sql, ['id' => $id]),
                  $this->className );
               
                  
-           
-
  }
 
 
