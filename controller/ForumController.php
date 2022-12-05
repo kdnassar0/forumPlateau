@@ -170,15 +170,15 @@ public function ajouterTopic(){
 
 
 
-   
-
-
-
 //  ici on se trouve des functions qui faitent le lien entre les raquetes qui on a fait dans la model/managers 
 
 // on fait return dans le view/forum/nom du fichier et on prepare un tableau qui on vq la traiter dans cheque list 
 
 //faudra aussi comprendre que la méthode "findAll" est une méthode générique qui provient de l'AbstractController (dont hérite chaque controller de l'application)
+
+   
+?>
+
 
 
 
