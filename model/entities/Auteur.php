@@ -9,6 +9,7 @@
         private $id ; 
         private $pseudonyme ; 
         private $motDePasse ; 
+        private $email ; 
 
         public function __construct($data){         
             $this->hydrate($data);       
@@ -34,6 +35,16 @@
         public function setMotDePasse($motDePasse){
             $this->motDePasse=$motDePasse ; 
             return $this ;
+        }
+
+        public function getEmail(){
+            return $this -> email ; 
+            
+        }
+        public function setEmail($email){
+            $this -> email =$email ; 
+            return $this  ;
+
         }
 
 

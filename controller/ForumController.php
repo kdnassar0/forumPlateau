@@ -5,8 +5,8 @@
     use App\Session;
     use App\AbstractController;
     use App\ControllerInterface;
-use Model\Entities\Categorie;
-use Model\Managers\TopicManager;
+    use Model\Entities\Categorie;
+    use Model\Managers\TopicManager;
     use Model\Managers\PostManager;
     use Model\Managers\CategorieManager;
     use Model\Managers\AuteurManager;
@@ -102,7 +102,7 @@ public function ajouterTopic(){
     $id =(isset($_GET['id']))? $_GET['id'] : null ;
 
     $ajouterTopic = new TopicManager();
-    $message = new PostManager() ;
+    $priemiereMessage = new PostManager() ;
 
 
     
@@ -115,19 +115,23 @@ public function ajouterTopic(){
         $message=filter_input(INPUT_POST,"message",FILTER_SANITIZE_SPECIAL_CHARS) ;
        
       
-        
+      
 
         if($titre && $message){
 
-         $ajouter=["titre"=>$titre,"categorie_id"=>$id,'auteur_id'=>2];
-
+         $ajouter=["titre"=>$titre,
+         "categorie_id"=>$id,
+         'auteur_id'=>2];
+       
          $ajouterMessage=$ajouterTopic->add($ajouter);
+        
+
+         $ajouter =["texte"=>$message,"topic_id"=>$ajouterMessage,
+         'auteur_id'=>3];
+
+
+         $priemiereMessage->add($ajouter);
          
-
-         $ajouter =["texte"=>$message,"topic_id"=>$ajouterMessage,'auteur_id'=>3];
-
-
-         $message->add($ajouter);
 
         }
    
@@ -159,6 +163,7 @@ public function ajouterTopic(){
 
 
     }
+
    
     }
 
