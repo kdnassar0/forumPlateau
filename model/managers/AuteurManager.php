@@ -47,6 +47,20 @@ namespace Model\Managers;
 
         }
 
+        public function checkMotDePasse($email){
+          
+            $sql  = "SELECT * from $this->tableName
+              WHERE email = :email" ;
+
+              return $this ->getOneOrNullResult(
+                DAO :: select($sql,['email'=>$email],false),
+                $this->className 
+
+
+              );
+
+        }
+
 
     }
     

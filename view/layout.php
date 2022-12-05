@@ -20,14 +20,6 @@
                 <nav>
                     <div id="nav-left">
                         <a href="/">Accueil</a>
-                        <?php
-                        if(App\Session::isAdmin()){
-                            ?>
-                            <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a>
-                          
-                            <?php
-                        }
-                        ?>
                     </div>
                     <div id="nav-right">
                     <?php
@@ -35,24 +27,18 @@
                         if(App\Session::getUser()){
                             ?>
                             <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                            <a href="/security/logout.html">Déconnexion</a>
+                            <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                            <a href="index.php?ctrl=forum&action=listCategories">la liste Categorie</a>
+                            <a href="index.php?ctrl=forum&action=afficherTopics">la liste Topics</a>
+                            <a href="index.php?ctrl=forum&action=afficherLesPost">la liste Posts</a>
+<p>
                             <?php
                         }
                         else{
                             ?>
-                            <a href="./view/security/login.php">Connexion</a>
-                            <a href="veiw/security/index.php?ctrl=security&action=afficherRegister
-">Inscription</a>
-
-                            <a href="index.php?ctrl=forum&action=listCategories">la liste Categorie</a>
-                            <a href="index.php?ctrl=forum&action=afficherTopics">la liste Topics</a>
-                            <a href="index.php?ctrl=forum&action=afficherLesPost">la liste Posts</a>
-                        
-                           
-                             
-                           
-                          
-                            
+                            <a href="index.php?ctrl=security&action=login">Connexion</a>
+                            <a href="index.php?ctrl=security&action=ajouterRegister">Inscription</a>
+                       
                         <?php
                      
                         }
@@ -64,6 +50,7 @@
             </header>
             
             <main id="forum">
+            
                 <?= $page ?>
             </main>
         </div>

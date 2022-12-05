@@ -10,9 +10,20 @@
         private $pseudonyme ; 
         private $motDePasse ; 
         private $email ; 
+        private $dateInscription ; 
+
 
         public function __construct($data){         
             $this->hydrate($data);       
+        }
+
+
+        public function getDateInscription(){
+           return $this->dateInscription;
+        }
+        public function setDateInscription($dateInscription){
+            $this-> dateInscription = $dateInscription ;
+            return $this ;
         }
 
         public function getId(){
@@ -48,6 +59,10 @@
         }
 
 
+        public function __toString()
+        {
+            return $this->pseudonyme;
+        }
 
 
 

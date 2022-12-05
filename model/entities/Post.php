@@ -61,7 +61,10 @@ final class Post extends Entity {
 
 
 
-
+public function __toString()
+{
+    return $this ->texte ."".$this->topic ;
+}
 
 
 

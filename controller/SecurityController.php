@@ -7,94 +7,140 @@ use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\AuteurManager;
 
-class SecurityController extends AbstractController implements ControllerInterface{
+class SecurityController extends AbstractController implements ControllerInterface
+{
 
 
-    public function index(){}
+    public function index()
+    {
+    }
 
 
-   
-
-public function afficherRegister(){
-    //function pour afficher la fourmulaire de l'inscription 
-
-    return [
-        "view" => VIEW_DIR."security/register.php",
-       
-    ];
 
 
-}    
-
-public function ajouterRegister(){
-    $auteurManager = new AuteurManager(); 
-
-// Cette partie là est bien dans le Controller (idéalement dans SecurityController)
-
-// Les méthodes findOneByEmail et findOneByUser sont des méthodes de UserManager (notez bien le " ! " avant les méthodes qui vérifient donc que l'utilisateur n'existe PAS en base de données selon son mail ou selon son pseudo)
+ 
 
 
-// REGISTER
+    public function ajouterRegister()
+    {
+        $auteurManager = new AuteurManager();
 
-// -on filtre les champs de saisie
+        // Cette partie là est bien dans le Controller (idéalement dans SecurityController)
 
-// -on vérifie que l'utilisateur n'existe pas (mail)
-
-// -on vérifie que le pseudo n'existe pas
-
-// -on vérifie que les 2 passwords correspondent
-
-// -on hash le password (password_hash)
-
-// -on ajoute l'user en bdd
-
-// -on peut imaginer une redirection vers le formulaire de login dans la foulée
-
-if(isset($_POST['submit'])){
-        $username = filter_input(INPUT_POST,'username',FILTER_SANITIZE_SPECIAL_CHARS) ;
-        $email = filter_input(INPUT_POST,'email',FILTER_SANITIZE_SPECIAL_CHARS) ; 
-        $password = filter_input(INPUT_POST,'password',FILTER_SANITIZE_SPECIAL_CHARS) ;
-        $password2 = filter_input(INPUT_POST,'password2',FILTER_SANITIZE_SPECIAL_CHARS) ;
-       
+        // Les méthodes findOneByEmail et findOneByUser sont des méthodes de UserManager (notez bien le " ! " avant les méthodes qui vérifient donc que l'utilisateur n'existe PAS en base de données selon son mail ou selon son pseudo)
 
 
-if($username && $email && $password && $password2){
-    
-    
-    if(!$auteurManager->findOneByEmail($email)){
+        // REGISTER
 
-        if(!$auteurManager->findOneByUser($username)){
-           
-       
-          if(($password==$password2) && strlen($password) >= 8){
+        // -on filtre les champs de saisie
 
-            $password_hash = password_hash($password,PASSWORD_DEFAULT) ;
-          
+        // -on vérifie que l'utilisateur n'existe pas (mail)
 
-            $inserer = [ "pseudonyme"=>$username ,
-                         "motDePasse"=>$password_hash , 
-                         "email" =>$email 
+        // -on vérifie que le pseudo n'existe pas
 
-          ];
-          
-        
-       
-          $auteurManager -> add($inserer);
-        
-          }
+        // -on vérifie que les 2 passwords correspondent
+
+        // -on hash le password (password_hash)
+
+        // -on ajoute l'user en bdd
+
+        // -on peut imaginer une redirection vers le formulaire de login dans la foulée
+
+        if (isset($_POST['submit'])) {
+            $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password2 = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
+
+
+
+            if ($username && $email && $password && $password2) {
+
+
+                if (!$auteurManager->findOneByEmail($email)) {
+
+                    if (!$auteurManager->findOneByUser($username)) {
+
+
+                        if (($password == $password2) && strlen($password) >= 8) {
+
+                            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+
+                            $inserer = [
+                                "pseudonyme" => $username,
+                                "motDePasse" => $password_hash,
+                                "email" => $email
+
+                            ];
+
+
+
+                            $auteurManager->add($inserer);
+                        }
+                    }
+                }
+            }
         }
-       }
-     
+        return [
+            "view" => VIEW_DIR . "security/register.php",
+
+        ];
+    }
+
+
+    public function login()
+    {
+        $auteurManager = new AuteurManager();
+
+
+
+        if (isset($_POST['submit'])) {
+
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+
+
+            //si les filters passent
+            if ($email && $password) {
+
+                //retrouver le mot de passe de l'utilisateur correspondant au mail 
+
+                $mot = $auteurManager->checkMotDePasse($email);
+
+                //si le mot de passe est retrouvé
+
+                if ($mot) {
+                    $hash  = $mot->getMotDePasse();
+
+                    // var_dump('test'); die ;
+                    //retrouve l'utilisateur par son mail  
+                    $user = $auteurManager->findOneByEmail($email);
+
+                    //copmparison du hash d ela base de donnees et le mot de passe renseigné
+                    if (password_verify($password, $hash)) {
+
+                        //placer l'utilisateur en session 
+                        Session::setUser($user);
+                    }
+                }
+            }
+        }
+
+        return [
+            "view" => VIEW_DIR."security/login.php",
+           
+        ];
     
-   }
-   
-   header("Location:index.php?action=");
- }
+    }
+
+    public function logout(){
+        unset($_SESSION["user"]) ;
+        
+        return [
+            "view" => VIEW_DIR."security/login.php",
+           
+        ];
+    
+    }
 }
-
-}
-
-
-
-
-?>
