@@ -1,0 +1,8 @@
+- une function qui permette d'ajouter un message juste si il est connecté 
+
+-message si le nom de l'utilisateur existe déja 
+
+-message si l'email existe deja
+
+-une fonction pour l'utilisateur
+

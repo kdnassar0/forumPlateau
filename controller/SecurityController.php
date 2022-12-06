@@ -77,10 +77,13 @@ class SecurityController extends AbstractController implements ControllerInterfa
 
 
                             $auteurManager->add($inserer);
+                            Session :: addFlash('success','Inscrption reussi');
+                        
                         }
                     }
                 }
-            }
+            }else{
+            Session :: addFlash('error','Il faut remplir touts les champs');}
         }
         return [
             "view" => VIEW_DIR . "security/register.php",
@@ -123,8 +126,9 @@ class SecurityController extends AbstractController implements ControllerInterfa
                         //placer l'utilisateur en session 
                         Session::setUser($user);
                     }
-                }
-            }
+                }   
+            } else{
+                Session :: addFlash('error','Il faut remplir touts les champs');}
         }
 
         return [
@@ -143,4 +147,20 @@ class SecurityController extends AbstractController implements ControllerInterfa
         ];
     
     }
+
+
+
+
+// --on soumet le formulaire
+// --on vérifie que les filtres du formulaires sont valides
+// --on stocke dans une variable le fait qu'on retrouve le mot de passe de la personne dont l'email est passé en paramètre (retrievePassword)
+// --si on retrouve, on récupère le mot de passe haché
+// --on retrouve l'utilisateur dont l'email est passé en paramètre
+// --on vérifie si le hash récupéré en BDD correspond au hash du mot de passe du formulaire (password_verify)
+// --si ça matche --> on stocke le user en session
+
+// [Hier 14:39] Mickael MURMANN - Elan Formation
+// J'ai géré le côté "utilisateur banni ou pas" dans ma vérification, vous pouvez évidemment passer cette étape pour le moment 
+
+
 }

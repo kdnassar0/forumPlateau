@@ -2,6 +2,7 @@
     namespace Model\Entities;
 
     use App\Entity;
+    use App\Session ;
 
 
     final class Auteur extends Entity {
@@ -11,6 +12,8 @@
         private $motDePasse ; 
         private $email ; 
         private $dateInscription ; 
+        private $role ; 
+
 
 
         public function __construct($data){         
@@ -55,6 +58,21 @@
         public function setEmail($email){
             $this -> email =$email ; 
             return $this  ;
+
+        }
+        public function getRole(){
+            return $this->role ; 
+        }
+        public function setRole($role){
+          $this ->role=$role ;
+          return $this ;
+        }
+
+        public function hasRole($role){
+            if(Session :: getUser()->getRole()==$role){
+                return true ;
+            }
+
 
         }
 

@@ -1,0 +1,128 @@
+nav{
+    background-color:#07070D;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 20px;
+   
+
+    
+}
+#mainpage{
+    background-color: #5AADBF;
+    border-radius: 10px;
+    padding: 20px;
+    width: 90vw;
+    height:90vh;
+    color: white;
+ 
+}
+#nav-left {
+  width: 50%; 
+
+
+}
+
+#nav-right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    gap:10px ;
+
+    
+ 
+}
+
+a{
+    color:white ;
+    text-decoration: none;
+    transition: 0.5;
+    
+   
+}
+
+
+
+body {
+    background-color:#F0F2F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+ 
+  
+}
+
+
+#forum {
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
+}
+form  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    flex-direction: column; 
+    gap: 20px;
+    background-color:#120759;
+    padding: 20px;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;    
+}
+
+#forum .connextion{
+  
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+
+
+
+form input {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+
+   
+}
+
+form label {
+    color: white;
+}
+
+form button{
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    background-color: #D9A78B;
+}
+
+
+ a:nth-child(3){
+    width: 400px;
+    height: 200px;
+    font-size: 25px;
+   color: white;
+    background-color:#120759;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+ 
+
+
+a:hover{
+  transform: scale(110%);
+
+}

@@ -7,6 +7,8 @@ $topic=(isset($_GET['id'])) ? $_GET['id'] : null  ;
 
 
 
+<?php
+if(App\Session::getUser()){?>
     <form action="index.php?ctrl=forum&action=ajouterPost&id=<?= $topic?>" method="post">
                     <h1>Ajouter un post</h1>
                     <label>
@@ -21,7 +23,7 @@ $topic=(isset($_GET['id'])) ? $_GET['id'] : null  ;
     </form>
 
 
-
+    <?php } ?>
     
 
 

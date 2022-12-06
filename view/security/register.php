@@ -1,6 +1,7 @@
 
+    
 <form action="index.php?ctrl=security&action=ajouterRegister" method="post">
-
+<div class="connextion">
      <div>
         <label for="usrname">Username</label>
         <input type="text" name="username" id="username">
@@ -31,9 +32,13 @@
 
 
 
+    </div>
+
 
 
 
 
 </form>
     
+
+

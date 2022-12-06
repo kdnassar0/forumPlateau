@@ -22,15 +22,15 @@
         
    
         public function users(){
-            $this->restrictTo("ROLE_USER");
+            $this->restrictTo("admin");
 
             $manager = new AuteurManager();
-            $users = $manager->findAll(['registerdate', 'DESC']);
+            $users = $manager->findAll(['dateinscription', 'DESC']);
 
             return [
-                "view" => VIEW_DIR."security/users.php",
+                "view" => VIEW_DIR."security/listAuteur.php",
                 "data" => [
-                    "users" => $users
+                    "auteur" => $users
                 ]
             ];
         }

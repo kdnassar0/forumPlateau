@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
+    <link rel="stylesheet" href="public/css/style.css">
+   
     <title>FORUM</title>
 </head>
 <body>
@@ -18,27 +19,45 @@
             <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
             <header>
                 <nav>
-                    <div id="nav-left">
-                        <a href="/">Accueil</a>
+                    <?php
+                    if(App\Session::isAdmin()){
+                        ?>
+                       
+                        <a href="index.php?ctrl=home&action=users">LIST AUTEUR</a>
+                        <?php
+                    }?>
+                
+                    <div id="nav-left ">
+                <a href="http://localhost/forumPlateau">Accueil</a>
+                       
                     </div>
+                
+                   
                     <div id="nav-right">
+
+                
                     <?php
                         
                         if(App\Session::getUser()){
                             ?>
+                           
                             <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
                             <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
-                            <a href="index.php?ctrl=forum&action=listCategories">la liste Categorie</a>
                             <a href="index.php?ctrl=forum&action=afficherTopics">la liste Topics</a>
                             <a href="index.php?ctrl=forum&action=afficherLesPost">la liste Posts</a>
-<p>
+                          
+
                             <?php
                         }
                         else{
                             ?>
+                          
                             <a href="index.php?ctrl=security&action=login">Connexion</a>
+                            
+                          
                             <a href="index.php?ctrl=security&action=ajouterRegister">Inscription</a>
-                       
+                          
+                            
                         <?php
                      
                         }
