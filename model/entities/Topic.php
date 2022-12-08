@@ -63,6 +63,11 @@ public function setAuteur($auteur){
          return $this ;
 }
 
+public function __toString()
+{
+      return  $this->titre ;
+}
+
 
 
 

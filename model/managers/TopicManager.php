@@ -39,16 +39,17 @@ class TopicManager extends Manager
         $sql = "
         SELECT titre FROM ".$this->tableName."
         ";
+     
         return $this->getMultipleResults(
             DAO::select($sql),
              $this->className);
 
-    }
+    }  
 
-  
+   
 
  
-}
+} 
 
 
    

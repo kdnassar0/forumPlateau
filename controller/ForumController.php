@@ -46,6 +46,7 @@ public function afficherTopics(){
     
         ];
        
+       
 
 }
 
@@ -57,13 +58,14 @@ public function listTopics(){
     $id=(isset($_GET["id"])) ? $_GET["id"] : null;
     
 
-
+   
     return [
         "view" => VIEW_DIR."forum/listTopics.php",
         "data" => [
             "topics" => $topicManager->listTopicParCategorie($id)
         ]
-    ];
+       
+    ]; 
 
 
 }
@@ -121,13 +123,13 @@ public function ajouterTopic(){
 
          $ajouter=["titre"=>$titre,
          "categorie_id"=>$id,
-         'auteur_id'=>2];
+         'auteur_id'=>$id];
        
          $ajouterMessage=$ajouterTopic->add($ajouter);
         
 
          $ajouter =["texte"=>$message,"topic_id"=>$ajouterMessage,
-         'auteur_id'=>3];
+         'auteur_id'=>$id];
 
 
          $priemiereMessage->add($ajouter);

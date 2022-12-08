@@ -3,15 +3,16 @@
 $topics = $result["data"]['topics'];
 $categorie=(isset($_GET['id'])) ? $_GET['id'] : null  ;
 
-    
+
 ?>
 
 
     <form action="index.php?ctrl=forum&action=ajouterTopic&id=<?= $categorie?>" method="post">
+     <div class="borderList">
                     <h1>Ajouter un topic</h1>
                     <label>
 
-                        <span>titre</span> <br>
+                        <span>Titre</span> <br>
                         <input type="text" name="name"><br><br>
                         
                     </label>
@@ -22,17 +23,17 @@ $categorie=(isset($_GET['id'])) ? $_GET['id'] : null  ;
                     
                     </label>
                 
-                    <input type="submit" name="submit" value="ajouter">
-                                    
+                    <input type="submit" name="submit" value="Ajouter">
+          </div>                          
     </form>
 
 
 
-    
+    <h1>liste topics</h1> 
 
 
-<h1>liste topics</h1>
 
+<div>
 <?php
 foreach($topics as $topic ){
    
@@ -44,3 +45,4 @@ foreach($topics as $topic ){
 }
 
   
+?>

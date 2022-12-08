@@ -1,5 +1,5 @@
 nav{
-    background-color:#07070D;
+    /* background-color:#07070D; */
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -12,10 +12,20 @@ nav{
     background-color: #5AADBF;
     border-radius: 10px;
     padding: 20px;
-    width: 90vw;
-    height:90vh;
+    width: 80%;
+    min-height:90vh;
     color: white;
+   
+  
  
+ 
+}
+#wrapper{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+
 }
 #nav-left {
   width: 50%; 
@@ -23,7 +33,7 @@ nav{
 
 }
 
-#nav-right {
+#nav-right  {
     width: 50%;
     display: flex;
     justify-content: flex-end;
@@ -32,97 +42,173 @@ nav{
     
  
 }
-
 a{
-    color:white ;
     text-decoration: none;
-    transition: 0.5;
-    
-   
-}
-
-
-
-body {
-    background-color:#F0F2F0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
- 
-  
-}
-
-
-#forum {
-    margin: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  
-}
-form  {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 100px;
-    flex-direction: column; 
-    gap: 20px;
-    background-color:#120759;
-    padding: 20px;
-    width: 300px;
-    height: 300px;
-    border-radius: 20px;    
-}
-
-#forum .connextion{
-  
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-direction: column;
-}
-
-
-
-
-form input {
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-    padding: 5px;
-
-   
-}
-
-form label {
     color: white;
 }
+/* body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
 
-form button{
-    padding: 10px 20px 10px 20px;
-    border-radius: 10px;
-    background-color: #D9A78B;
+.home{
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 100px;
 }
 
+.elementsHome{
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 50px;
 
- a:nth-child(3){
+}
+
+.listCH a{
+    background-color: black;
     width: 400px;
     height: 200px;
-    font-size: 25px;
-   color: white;
-    background-color:#120759;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.listCH a:hover {
+    transform: scale(110%);
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+ 
+
+  
+}
+.list a{
+    background-color: #07070D;
+    width: 150px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+  
     transition: 0.5s;
+    border-radius: 5px;
 }
+
+.list a:hover{
+    transform: scale(110%);
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+   
+   
+   
+}
+.borderList{
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+    border-color: black
+}
+.borderList1{
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+    gap: 10px;
+    border-color: black;
+    margin-top: 100px
+}
+.borderList1 input{
+    padding: 5px;
+    
+}
+
+h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    border-radius: 20px;
+
+   
+}
+
+.listTopic{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+   
+}
+.listTopic span{
+    background-color: #07070D;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    border-radius: 5px;
+
+}
+.listTopic span:hover{
+    transform:scale(110%) ;
+}
+
+.listPosts{
+    background-color: #07070D;
+    display: flex;
+  padding: 10px;
+    gap: 10px;
+    flex-direction: column;
+    border-radius: 10px;
  
+}
 
-
-a:hover{
-  transform: scale(110%);
+.one{
+    font-size: 25px;
 
 }
+
+.date {
+   width: 50%;
+    /* background-color: #5AADBF; */
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.button{
+    border-radius: 20px;
+    padding: 5px;
+
+}
+
+
+
