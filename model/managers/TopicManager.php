@@ -22,7 +22,7 @@ class TopicManager extends Manager
     {
        
         $sql = "
-            SELECT titre,id_topic
+            SELECT *
             FROM ".$this->tableName."
             WHERE categorie_id = :id
             ";
@@ -37,7 +37,7 @@ class TopicManager extends Manager
     public function afficherLesTopics(){
 
         $sql = "
-        SELECT titre FROM ".$this->tableName."
+        SELECT * FROM ".$this->tableName."
         ";
      
         return $this->getMultipleResults(

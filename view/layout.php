@@ -51,8 +51,7 @@
                         }
                         else{
                             ?>
-                              <a href="index.php?ctrl=forum&action=afficherTopics">la liste Topics</a>
-                            <a href="index.php?ctrl=forum&action=afficherLesPost">la liste Posts</a>
+                            
                           
                             <a href="index.php?ctrl=security&action=login">Connexion</a>
                             

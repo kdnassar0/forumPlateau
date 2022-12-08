@@ -10,7 +10,7 @@
 
 if(App\Session::getUser()){?>
   <div class="listCH">
-   <a href="index.php?ctrl=forum&action=listCategories"> liste Categorie</a>
+   <a href="index.php?ctrl=forum&action=listCategories">la liste Categorie</a>
   </div>
   <div class="elementsHome">
     <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>

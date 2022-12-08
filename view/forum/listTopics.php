@@ -6,8 +6,10 @@ $categorie=(isset($_GET['id'])) ? $_GET['id'] : null  ;
 
 ?>
 
+<?php if(App\Session::getUser()){?>
 
     <form action="index.php?ctrl=forum&action=ajouterTopic&id=<?= $categorie?>" method="post">
+   
      <div class="borderList">
                     <h1>Ajouter un topic</h1>
                     <label>
@@ -28,21 +30,40 @@ $categorie=(isset($_GET['id'])) ? $_GET['id'] : null  ;
     </form>
 
 
+<?php } ?>
+  
 
     <h1>liste topics</h1> 
+    <?php if(!App\Session::getUser()){?>
+<h2>Pensez-vous à connecter si vous voulez ajouter un topic : </h2>
+<?php } ?>
 
-
-
-<div>
+<div class="listTopicList">
 <?php
-foreach($topics as $topic ){
-   
 
+if($topics){
+foreach($topics as $topic ){
+  
+  
     ?>
-    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getTitre()?></a></p>
+
+    <p><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>"><?=$topic->getTitre()?><?=$topic->getDateCreation()?></a></p>
+
     <?php
 
+
+}
+
+}else{
+    echo "Il n'y a pas de topics qui correspondent à cette categorie " ; ?>
+     <a href="index.php?ctrl=security&
+     action=ajouterRegister">S'inscrire -</a>
+     <a href="index.php?ctrl=security&action=login">Se connecter</a>
+     <?php
 }
 
   
 ?>
+  
+
+</div>

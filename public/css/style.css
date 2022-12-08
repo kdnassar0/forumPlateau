@@ -152,8 +152,16 @@ h1{
     justify-content: center;
 }
 input{
-    border-radius: 20px;
+    border-radius: 5px;
+    border-style: solid;
+   
 
+   
+}
+.case {
+    border-style: solid;
+  
+  
    
 }
 
@@ -164,6 +172,37 @@ input{
     justify-content: center;
     gap: 10px;
    
+}
+.listPostList{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+}
+
+.listTopicList{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+}
+.listTopicList p {
+    background-color: #07070D;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    border-radius: 5px;
+
+}
+.listTopicList p:hover{
+    transform:scale(110%) ;
 }
 .listTopic span{
     background-color: #07070D;

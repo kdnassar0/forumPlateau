@@ -58,7 +58,7 @@ public function listTopics(){
     $id=(isset($_GET["id"])) ? $_GET["id"] : null;
     
 
-   
+
     return [
         "view" => VIEW_DIR."forum/listTopics.php",
         "data" => [
@@ -66,7 +66,6 @@ public function listTopics(){
         ]
        
     ]; 
-
 
 }
 public function listPosts(){ 
@@ -99,16 +98,18 @@ public function afficherLesPost(){
 
 }
 
-public function ajouterTopic(){
+public function ajouterTopic($id){
 
     $id =(isset($_GET['id']))? $_GET['id'] : null ;
+ 
+    $user =\App\Session::getUser()->getId();
 
     $ajouterTopic = new TopicManager();
     $priemiereMessage = new PostManager() ;
 
 
     
-   
+
 
 
     if(isset($_POST['submit'])){
@@ -117,48 +118,49 @@ public function ajouterTopic(){
         $message=filter_input(INPUT_POST,"message",FILTER_SANITIZE_SPECIAL_CHARS) ;
        
       
-      
+        
 
         if($titre && $message){
 
          $ajouter=["titre"=>$titre,
          "categorie_id"=>$id,
-         'auteur_id'=>$id];
+         'auteur_id'=>$user];
        
          $ajouterMessage=$ajouterTopic->add($ajouter);
         
 
          $ajouter =["texte"=>$message,"topic_id"=>$ajouterMessage,
-         'auteur_id'=>$id];
+         'auteur_id'=>$user];
 
 
          $priemiereMessage->add($ajouter);
          
-
+    $this->redirectTo('forum','listTopics',$id);
         }
    
 
 
-    }    
+    }   
+   
     
     }
 
 
 
-    public function ajouterPost(){
+    public function ajouterPost($id){
         $id =(isset($_GET['id']))? $_GET['id'] : null ;
-
+        $user =$_SESSION['user']->getId();
         $ajouterPost = new PostManager() ; 
 
         if(isset($_POST['submit'])){
             $texte =filter_input(INPUT_POST,'name',FILTER_SANITIZE_SPECIAL_CHARS) ;
             if($texte){
-                $ajouter=["texte"=>$texte ,"topic_id"=>$id,"auteur_id"=>3];
+                $ajouter=["texte"=>$texte ,"topic_id"=>$id,"auteur_id"=>$user];
                 $ajouterPost->add($ajouter);
             }
         }
 
-        header("Location:index.php?action=");
+        $this->redirectTo('forum','listPosts',$id);
 
 
 
