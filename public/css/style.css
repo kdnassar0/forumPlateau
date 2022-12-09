@@ -182,28 +182,9 @@ input{
 
 }
 
-.listTopicList{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
 
-}
-.listTopicList p {
-    background-color: #07070D;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.5s;
-    border-radius: 5px;
 
-}
-.listTopicList p:hover{
-    transform:scale(110%) ;
-}
+
 .listTopic span{
     background-color: #07070D;
     width: 150px;
@@ -249,5 +230,37 @@ input{
 
 }
 
+.styleTable{
+   border: 1px solid;
+   border-radius: 20px;
+   padding: 10px;
+ 
+   
+   
+}
 
+.styleTable p{
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    background-color: blueviolet ;
+    justify-content: flex-start;
+    width: 20vw;
+   
+    
+
+  
+}
+.styleTable span {
+    display: flex;
+    padding: 10px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 20vw;
+    background-color: black;
+    border-radius: 5px;
+ 
+}
 

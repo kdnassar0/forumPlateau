@@ -43,6 +43,8 @@ foreach($posts as $post ){
 
     ?>
     <p><?=$post->getTexte()?></p>
+    <p><?=$post->getAuteur()?></p>
+    <p><?=$post->getDateCreation()?></p>
 
     <?php
 }

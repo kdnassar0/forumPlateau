@@ -46,6 +46,21 @@ class TopicManager extends Manager
 
     }  
 
+    public function closeTopic($id){
+        $sql  = "UPDATE ".$this->tableName."
+        set verroier = 1
+        WHERE id_topic = :id
+        " ;
+      
+        return $this->getSingleScalarResult(
+            DAO::select($sql,['id'=>$id]),
+            $this->className
+        );
+
+    }
+
+    
+    
    
 
  

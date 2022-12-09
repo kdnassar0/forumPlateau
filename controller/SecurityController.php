@@ -6,6 +6,7 @@ use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\AuteurManager;
+use Model\Managers\TopicManager;
 
 class SecurityController extends AbstractController implements ControllerInterface
 {
@@ -148,6 +149,8 @@ class SecurityController extends AbstractController implements ControllerInterfa
     
     }
 
+   
+
 
 
 
@@ -162,5 +165,18 @@ class SecurityController extends AbstractController implements ControllerInterfa
 // [Hier 14:39] Mickael MURMANN - Elan Formation
 // J'ai géré le côté "utilisateur banni ou pas" dans ma vérification, vous pouvez évidemment passer cette étape pour le moment 
 
+
+public function closeTopic(){
+    $id=(isset($_GET['id'])) ? $_GET['id'] : null ; 
+
+    $topicManager  = new TopicManager(); 
+    
+
+    //on fais passer l'id du topic concerne
+    $topicManager->closeTopic($id); 
+
+    $this->redirectTo('forum','listPosts',$id) ;
+
+}
 
 }

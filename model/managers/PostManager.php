@@ -32,7 +32,7 @@
         public function listPostParTopics($id){ 
 
             $sql = "
-            SELECT texte
+            SELECT texte,dateCreation,auteur_id
             FROM ".$this->tableName."
             WHERE topic_id = :id
             " ;
