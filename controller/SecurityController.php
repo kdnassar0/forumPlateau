@@ -177,6 +177,7 @@ public function closeTopic(){
 
     $this->redirectTo('forum','listPosts',$id) ;
 
+
 }
 
 }

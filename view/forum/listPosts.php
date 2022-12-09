@@ -1,14 +1,22 @@
 <?php
 
+use Model\Entities\Topic;
+
 $posts = $result["data"]['post'];
 $topic=(isset($_GET['id'])) ? $_GET['id'] : null  ;
-    
+$topics =$result['data']['topics'] ;
+
+
 ?>
 
 
 
 <?php
-if(App\Session::getUser()){?>
+if(App\Session::getUser() && $topics['verroier']==0){
+  
+ 
+    ?>
+    
     <form action="index.php?ctrl=forum&action=ajouterPost&id=<?= $topic?>" method="post">
     
                     <h1>Ajouter un post</h1>
@@ -42,6 +50,7 @@ foreach($posts as $post ){
     
 
     ?>
+    
     <p><?=$post->getTexte()?></p>
     <p><?=$post->getAuteur()?></p>
     <p><?=$post->getDateCreation()?></p>

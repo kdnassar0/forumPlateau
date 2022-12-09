@@ -52,6 +52,7 @@ $categorie = (isset($_GET['id'])) ? $_GET['id'] : null;
             if($topic->getVerroier()==0){
          
             ?><p> <a href="index.php?ctrl=security&action=closeTopic&id=<?=$topic->getId()?>">close</a></p>
+                
 
 
                     <?php    }else { echo 'closed' ;
@@ -59,12 +60,13 @@ $categorie = (isset($_GET['id'])) ? $_GET['id'] : null;
                     }
     ?>
           
-          
+        
             <p><a href="index.php?ctrl=forum&action=listPosts&id=<?= $topic->getId() ?>"><?= $topic->getTitre() ?><br>By :
                     <?= $topic->getAuteur() ?>
                     <?= $topic->getDateCreation() ?></a></p>
 
         <?php
+       
 
         }
     } else {

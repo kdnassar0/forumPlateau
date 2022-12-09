@@ -59,6 +59,21 @@ class TopicManager extends Manager
 
     }
 
+    //function pour recuperer toute les elements dans le topic et on l'appele dans forum/controller/listPOST et aprés dans la listPosts 
+    public function topicParId($id){
+        $sql = "
+        SELECT * FROM ".$this->tableName."
+        
+        WHERE id_topic = :id
+    
+        " ; 
+        return $this->getSingleScalarResult(
+            DAO::select($sql,['id' => $id]),
+            $this->className
+        );
+
+    }
+
     
     
    

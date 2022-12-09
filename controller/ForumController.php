@@ -72,16 +72,16 @@ class ForumController extends AbstractController implements ControllerInterface
     public function listPosts()
     {
 
-
+        $topicManager = new TopicManager(); 
         $postManager = new PostManager();
         $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
-
+        // var_dump($topicManager->topicParId($id)) ;die;
 
         return [
             "view" => VIEW_DIR . "forum/listPosts.php",
             "data" => [
-                "post" => $postManager->listPostParTopics($id)
+                "post" => $postManager->listPostParTopics($id), "topics"=>$topicManager->topicParId($id)
             ]
 
         ];
@@ -151,7 +151,7 @@ class ForumController extends AbstractController implements ControllerInterface
     public function ajouterPost($id)
     {
          
-        
+
         $id = (isset($_GET['id'])) ? $_GET['id'] : null;
         $user = $_SESSION['user']->getId();
         $ajouterPost = new PostManager();
