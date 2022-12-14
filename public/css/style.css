@@ -230,37 +230,43 @@ input{
 
 }
 
-.styleTable{
-   border: 1px solid;
-   border-radius: 20px;
-   padding: 10px;
- 
-   
-   
-}
 
-.styleTable p{
+
+.tableau{
+    display: flex;
+    gap: 20px;
     border: 1px solid;
-    border-radius: 20px;
     padding: 10px;
-    display: flex;
-    background-color: blueviolet ;
-    justify-content: flex-start;
-    width: 20vw;
-   
+    border-radius: 10px;
     
-
   
-}
-.styleTable span {
-    display: flex;
-    padding: 10px;
-    font-size: 20px;
-    align-items: center;
-    justify-content: center;
-    width: 20vw;
-    background-color: black;
-    border-radius: 5px;
- 
+   
+   
+   
 }
 
+.tableau .one {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    padding: 10px;
+    background-color: #07070D;
+    border-radius: 10px;
+    
+}
+.tableau .one .titre{
+    font-size: 35px;
+}
+.tableau .one .datail {
+    font-size: 18px;
+
+}
+.tableau .tow{
+ 
+   display: flex;
+   font-size: 35px;
+   align-items: flex-end;
+   margin: 25px;
+  
+   
+}

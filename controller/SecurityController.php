@@ -14,6 +14,10 @@ class SecurityController extends AbstractController implements ControllerInterfa
 
     public function index()
     {
+
+        return [
+
+            "view" => VIEW_DIR."home.php" ];
     }
 
 
@@ -160,10 +164,10 @@ class SecurityController extends AbstractController implements ControllerInterfa
 // --si on retrouve, on récupère le mot de passe haché
 // --on retrouve l'utilisateur dont l'email est passé en paramètre
 // --on vérifie si le hash récupéré en BDD correspond au hash du mot de passe du formulaire (password_verify)
-// --si ça matche --> on stocke le user en session
+// --si ça marche --> on stocke le user en session
 
-// [Hier 14:39] Mickael MURMANN - Elan Formation
-// J'ai géré le côté "utilisateur banni ou pas" dans ma vérification, vous pouvez évidemment passer cette étape pour le moment 
+
+
 
 
 public function closeTopic(){
@@ -180,4 +184,43 @@ public function closeTopic(){
 
 }
 
+
+public function findTopicsByUser(){
+       
+    $id=(isset($_GET['id'])) ? $_GET['id'] : null ; 
+
+    $topicManager = new TopicManager();
+  
+
+    return [
+        "view" => VIEW_DIR."security/profile.php",
+        "data" => [
+            "topics" => $topicManager->findTopicsByUser($id)
+        ] 
+
+     
+    ];
+ 
+   
 }
+
+public function AfficherProfileUtilisateur(){
+    $id=(isset($_GET['id'])) ? $_GET['id'] : null ;
+  
+    $auteurManager = new auteurManager();
+    return [
+        "view" => VIEW_DIR."security/viewProfile.php",
+        "data" => [
+            "details" => $auteurManager->profileUtilisateur($id)
+            ] 
+            
+            
+        ];
+        
+      
+
+}
+
+}
+
+?>

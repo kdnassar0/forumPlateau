@@ -50,21 +50,35 @@ class AuteurManager extends Manager
         );
     }
 
+    public function profileUtilisateur($id){
+        $sql =" SELECT * FROM $this->tableName
+        WHERE id_auteur=:id
+        " ;
+     
+         return $this->getOneOrNullResult(
+            DAO::select($sql, ['id'=>$id], false),
+            $this->className
+        );
+       
+
+    }
+
 
     public function checkMotDePasse($email)
     {
 
-        $sql  = "SELECT * from $this->tableName
+        $sql  = "SELECT * FROM $this->tableName
               WHERE email = :email";
 
         return $this->getOneOrNullResult(
             DAO::select($sql, ['email' => $email], false),
             $this->className
-
-
+            
         );
     }
+    
 }
+
     
 
 

@@ -74,15 +74,32 @@ class TopicManager extends Manager
 
     }
 
+    public function findTopicsByUser($id)
+    {
+        $sql = "
+        SELECT titre FROM ".$this->tableName."
+        WHERE auteur_id = :id 
+
+        Order by dateCreation DESC 
+        limit 5
+        " ;
+        
+        
+        return $this->getMultipleResults(
+            DAO::select($sql,['id'=>$id]),
+            $this->className
+        );
+      
+    }
+    
+
     
     
    
 
  
 } 
-
-
-   
+ 
 // Tous les Managers (dossier Model) hériteront de la classe Manager (dossier App) pour bénéficier des méthodes pré-établies : findAll, findOneById, ...
 
 

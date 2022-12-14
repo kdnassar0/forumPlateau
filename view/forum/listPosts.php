@@ -14,7 +14,7 @@ $topics =$result['data']['topics'] ;
 <?php
 if(App\Session::getUser() && $topics['verroier']==0){
   
- 
+  
     ?>
     
     <form action="index.php?ctrl=forum&action=ajouterPost&id=<?= $topic?>" method="post">
@@ -34,7 +34,10 @@ if(App\Session::getUser() && $topics['verroier']==0){
     </form>
 
 
-    <?php } ?>
+    <?php }else{
+        ?> <p>Topic closed</p> <?php
+    }
+    ?>
     
 
 

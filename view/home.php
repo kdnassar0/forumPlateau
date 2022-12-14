@@ -13,8 +13,9 @@ if(App\Session::getUser()){?>
    <a href="index.php?ctrl=forum&action=listCategories">la liste Categorie</a>
   </div>
   <div class="elementsHome">
-    <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+  <a href="index.php?ctrl=security&action=AfficherProfileUtilisateur&id=<?=$_SESSION['user']->getId()?>"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
     <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+   
   </div>
 <?php
 }else{?>

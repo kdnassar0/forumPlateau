@@ -16,8 +16,8 @@ foreach($post as $post1){
    
     ?>
   
-    <span class="one"> Message : <?=$post1->getTexte() ?></span>
-    <span class="date"> Date :<?=$post1->getDateCreation() ?></span>
+    <span > Message : <?=$post1->getTexte() ?></span>
+    <span > Date :<?=$post1->getDateCreation() ?></span>
   
 
 <?php
