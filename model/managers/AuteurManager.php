@@ -76,6 +76,8 @@ class AuteurManager extends Manager
             
         );
     }
+
+    
     
 }
 

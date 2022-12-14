@@ -6,8 +6,8 @@ $auteurs = $result ['data']['auteur'] ;
 
 
 foreach($auteurs as $auteur){
-   echo $auteur->getPseudonyme() . "<br>";
-   echo $auteur->dateinscription() ; 
+   echo "<p>".$auteur->getPseudonyme()."</p>" ;
+   echo "<p>". $auteur->getDateInscription()."</p>" ; 
 }
 
 

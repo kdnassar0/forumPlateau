@@ -15,7 +15,7 @@ foreach($topic as $topic1){
    
     ?>
 
-    <span><?=$topic1->getTitre() ?></span>
+   <span><?=$topic1->getTitre() ?></span> 
     
    
     

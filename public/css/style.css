@@ -238,7 +238,9 @@ input{
     border: 1px solid;
     padding: 10px;
     border-radius: 10px;
-    
+    margin: 10px;
+    background-color: blueviolet;
+    /* flex-direction: column; */
   
    
    
@@ -248,10 +250,10 @@ input{
 .tableau .one {
     display: flex;
     flex-direction: column;
-    border: 1px solid;
+ 
     padding: 10px;
-    background-color: #07070D;
-    border-radius: 10px;
+    width: 50%;
+
     
 }
 .tableau .one .titre{
@@ -264,9 +266,13 @@ input{
 .tableau .tow{
  
    display: flex;
-   font-size: 35px;
-   align-items: flex-end;
-   margin: 25px;
+   font-size: 25px;
+   left: 20px;
+   width: 50%;
+   margin-top: 20px;
+   padding: 10px;
   
+ 
    
 }
+
