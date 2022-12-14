@@ -79,14 +79,13 @@ class SecurityController extends AbstractController implements ControllerInterfa
 
                             ];
 
-
-
                             $auteurManager->add($inserer);
                             Session :: addFlash('success','Inscrption reussi');
                         
-                        }
+                        }else{Session :: addFlash('error','mot de passe pas correct');}
                     }
-                }
+                 
+                }else{ Session :: addFlash('error','email existe');}
             }else{
             Session :: addFlash('error','Il faut remplir touts les champs');}
         }
@@ -222,5 +221,3 @@ public function AfficherProfileUtilisateur(){
 }
 
 }
-
-?>
