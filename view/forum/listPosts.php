@@ -6,6 +6,7 @@ $posts = $result["data"]['post'];
 $topic=(isset($_GET['id'])) ? $_GET['id'] : null  ;
 $topics =$result['data']['topics'] ;
 
+ echo "<p>".$topics['titre']."</p>" ;
 
 ?>
 
