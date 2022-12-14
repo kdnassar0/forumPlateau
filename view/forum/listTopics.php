@@ -4,9 +4,15 @@ use Model\Entities\Topic;
 
 $topics = $result["data"]['topics'];
 $categorie = (isset($_GET['id'])) ? $_GET['id'] : null;
+$nomCategorie = $result["data"]['categorie'];
 
+foreach($nomCategorie as $nom){
+    ?> <p><?=$nom->getNomCategorie()?></p>
 
+    <?php
+}
 ?>
+
 
 <?php if (App\Session::getUser()) { ?>
 

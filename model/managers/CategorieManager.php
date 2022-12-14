@@ -16,6 +16,18 @@ namespace Model\Managers;
         }
 
 
+    public function nomCategorie($id){
+        $sql = "
+        SELECT * FROM ".$this->tableName." 
+        WHERE id_categorie = :id ";
+
+        return $this->getMultipleResults(
+            DAO::select($sql, ['id' => $id]),
+             $this->className );
+         
+    }
+
+
     }
 
 

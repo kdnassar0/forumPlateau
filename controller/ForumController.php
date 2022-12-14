@@ -57,6 +57,7 @@ class ForumController extends AbstractController implements ControllerInterface
 
 
         $topicManager = new TopicManager();
+        $categorieManager=new CategorieManager();
         $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
 
@@ -64,7 +65,7 @@ class ForumController extends AbstractController implements ControllerInterface
         return [
             "view" => VIEW_DIR . "forum/listTopics.php",
             "data" => [
-                "topics" => $topicManager->listTopicParCategorie($id)
+                "topics" => $topicManager->listTopicParCategorie($id),"categorie"=>$categorieManager->nomCategorie($id)
             ]
 
         ];
