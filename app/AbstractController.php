@@ -13,7 +13,7 @@
                 $url.= $id ? "&id=".$id : "";
               
             }
-            else $url = "/";
+            else $url = "/forumPlateau";
             header("Location: $url");
             die();
 

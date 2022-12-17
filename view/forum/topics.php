@@ -7,15 +7,15 @@ $topic = $result ['data']['topics'] ;
 
 
 <h1>Touts les  Topics</h1>
-<div class="listTopic">
+<div class="topics">
 
 <?php
 
 foreach($topic as $topic1){
    
     ?>
-
-   <span><?=$topic1->getTitre() ?></span> 
+  
+   <span><a href="index.php?ctrl=forum&action=listPosts&id=<?= $topic1->getId() ?>"><?=$topic1->getTitre() ?></a></span> 
     
    
     
@@ -26,3 +26,4 @@ foreach($topic as $topic1){
 ?>
 
 </div>
+

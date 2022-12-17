@@ -4,12 +4,13 @@ nav{
     justify-content: space-between;
     padding: 20px;
     border-radius: 20px;
-   
+   background-color:rgba(0, 0, 255, 0.284);
+
 
     
 }
 #mainpage{
-    background-color: #5AADBF;
+    background-color: #2f2b6c;
     border-radius: 10px;
     padding: 20px;
     width: 80%;
@@ -70,7 +71,7 @@ a{
 }
 
 .listCH a{
-    background-color: black;
+    background-color: ;
     width: 400px;
     height: 200px;
     display: flex;
@@ -78,6 +79,7 @@ a{
     align-items: center;
     border-radius: 10px;
     transition: 0.5s;
+    background-color:rgba(0, 0, 255, 0.284);
 }
 .listCH a:hover {
     transform: scale(110%);
@@ -86,28 +88,39 @@ a{
 .list{
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction:row;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    gap: 100px;
+   
+   
+   
+
+
+}
+.list p  {
  
-
-  
-}
-.list a{
-    background-color: #07070D;
-    width: 150px;
-    height: 150px;
+    border: 1px dashed black;
+   border-radius: 20px;
+    min-width: 20%;
+    height:350px;
     display: flex;
-    align-items: center;
     justify-content: center;
-  
-    transition: 0.5s;
-    border-radius: 5px;
+    align-items: center;
+    background-color: rgba(0, 0, 255, 0.284);
+    
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    box-shadow:0 8px 32px 0 rgba(142, 89, 89, 0.547);
+    font-size: 25px;
+    
 }
 
-.list a:hover{
-    transform: scale(110%);
-}
+
+
+
+
+
 
 form{
     display: flex;
@@ -127,7 +140,7 @@ form{
     flex-direction: column;
     border-radius: 20px;
     padding: 20px;
-    border-color: black
+    border-color: black ;
 }
 .borderList1{
     border: 1px solid;
@@ -139,7 +152,7 @@ form{
     padding: 20px;
     gap: 10px;
     border-color: black;
-    margin-top: 100px
+    margin-top: 100px;
 }
 .borderList1 input{
     padding: 5px;
@@ -160,6 +173,12 @@ input{
 }
 .case {
     border-style: solid;
+    border-radius: 10px;
+    
+    min-width: 40vw;
+    min-height: 30vh;
+    padding: 10px;
+    
   
   
    
@@ -178,27 +197,35 @@ input{
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    flex-direction: column;
+   padding: 10px;
+   border: 1px dashed black;
+   border-radius: 20px;
+    margin: 10px;
+    
+   
+
+}
+.listPostList .one {
+/* background-color: red; */
+display: flex;
+padding: 10px;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+font-size: 25px;
+
 
 }
 
 
 
 
-.listTopic span{
-    background-color: #07070D;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.5s;
-    border-radius: 5px;
 
-}
-.listTopic span:hover{
-    transform:scale(110%) ;
-}
+
+
+
+
 
 .listPosts{
     background-color: #07070D;
@@ -210,10 +237,7 @@ input{
  
 }
 
-.one{
-    font-size: 25px;
 
-}
 
 .date {
    width: 50%;
@@ -231,48 +255,56 @@ input{
 }
 
 
-
-.tableau{
+.listTopic{
     display: flex;
-    gap: 20px;
-    border: 1px solid;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 10px;
-    background-color: blueviolet;
-    /* flex-direction: column; */
-  
-   
-   
+    
+    justify-content: space-around;
+   margin: 10px;
+   border: 1px dashed black;
+   border-radius: 20px;
+
    
 }
-
-.tableau .one {
+.listTopic p {
+   
+    min-width: 22%;
+   
     display: flex;
-    flex-direction: column;
- 
+    align-items: center;
+    justify-content: center;
     padding: 10px;
-    width: 50%;
-
+   
     
 }
-.tableau .one .titre{
-    font-size: 35px;
-}
-.tableau .one .datail {
-    font-size: 18px;
+.vide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  
 
 }
-.tableau .tow{
- 
-   display: flex;
-   font-size: 25px;
-   left: 20px;
-   width: 50%;
-   margin-top: 20px;
-   padding: 10px;
-  
- 
-   
+.nomCategorie{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
 }
+
+.topics{
+display: flex;
+    gap:20px;
+  min-width: 20vw;
+  min-height: 20vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: red;
+}
+.topics span {
+    background-color: blue;
+    width: 30%;
+}
+
+
+
 

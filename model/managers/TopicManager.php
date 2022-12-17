@@ -10,7 +10,7 @@ class TopicManager extends Manager
 {
 
     protected $className = "Model\Entities\Topic";
-    protected $tableName = "topics";
+    protected $tableName = "topic";
 
 
     public function __construct()
@@ -46,6 +46,7 @@ class TopicManager extends Manager
 
     }  
 
+
     public function closeTopic($id){
         $sql  = "UPDATE ".$this->tableName."
         set verroier = 1
@@ -58,6 +59,21 @@ class TopicManager extends Manager
         );
 
     }
+    public function openTopic($id){
+        $sql  = "UPDATE ".$this->tableName."
+        set verroier = 0
+        WHERE id_topic = :id
+        " ;
+      
+        return $this->getSingleScalarResult(
+            DAO::select($sql,['id'=>$id]),
+            $this->className
+        );
+
+    }
+
+
+
 
     //function pour recuperer toute les elements dans le topic et on l'appele dans forum/controller/listPOST et aprés dans la listPosts 
     public function topicParId($id){
@@ -92,6 +108,8 @@ class TopicManager extends Manager
       
     }
     
+    
+   
 
     
     

@@ -107,7 +107,7 @@ class ForumController extends AbstractController implements ControllerInterface
               
             }
         }
-        $this->redirectTo('forum', 'listCategorie');
+        $this->redirectTo('forum', 'listCategories');
        
     }
 
@@ -134,18 +134,10 @@ class ForumController extends AbstractController implements ControllerInterface
         $ajouterTopic = new TopicManager();
         $priemiereMessage = new PostManager();
 
-
-
-
-
-
         if (isset($_POST['submit'])) {
 
             $titre = filter_input(INPUT_POST, "name", FILTER_SANITIZE_SPECIAL_CHARS);
             $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_SPECIAL_CHARS);
-
-
-
 
             if ($titre && $message) {
 

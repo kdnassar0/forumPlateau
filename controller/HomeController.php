@@ -15,9 +15,9 @@ use Model\Managers\AuteurManager;
         public function index(){
             
            
-                // return [
-                //     "view" => VIEW_DIR."home.php"
-                // ];
+                return [
+                    "view" => VIEW_DIR."home.php"
+                ];
             }
             
      

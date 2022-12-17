@@ -63,6 +63,8 @@ class AuteurManager extends Manager
 
     }
 
+   
+
 
     public function checkMotDePasse($email)
     {
@@ -76,6 +78,7 @@ class AuteurManager extends Manager
             
         );
     }
+
 
     
     

@@ -6,6 +6,7 @@ use App\Session;
 use App\AbstractController;
 use App\ControllerInterface;
 use Model\Managers\AuteurManager;
+use Model\Managers\PostManager;
 use Model\Managers\TopicManager;
 
 class SecurityController extends AbstractController implements ControllerInterface
@@ -17,13 +18,14 @@ class SecurityController extends AbstractController implements ControllerInterfa
 
         return [
 
-            "view" => VIEW_DIR."home.php" ];
+            "view" => VIEW_DIR . "home.php"
+        ];
     }
 
 
 
 
- 
+
 
 
     public function ajouterRegister()
@@ -80,14 +82,17 @@ class SecurityController extends AbstractController implements ControllerInterfa
                             ];
 
                             $auteurManager->add($inserer);
-                            Session :: addFlash('success','Inscrption reussi');
-                        
-                        }else{Session :: addFlash('error','mot de passe pas correct');}
+                            Session::addFlash('success', 'Inscrption reussi');
+                        } else {
+                            Session::addFlash('error', 'mot de passe pas correct');
+                        }
                     }
-                 
-                }else{ Session :: addFlash('error','email existe');}
-            }else{
-            Session :: addFlash('error','Il faut remplir touts les champs');}
+                } else {
+                    Session::addFlash('error', 'email existe');
+                }
+            } else {
+                Session::addFlash('error', 'Il faut remplir touts les champs');
+            }
         }
         return [
             "view" => VIEW_DIR . "security/register.php",
@@ -130,94 +135,120 @@ class SecurityController extends AbstractController implements ControllerInterfa
                         //placer l'utilisateur en session 
                         Session::setUser($user);
                     }
-                }   
-            } else{
-                Session :: addFlash('error','Il faut remplir touts les champs');}
+                }
+                $this->redirectTo('home');
+            } else {
+                Session::addFlash('error', 'Il faut remplir touts les champs');
+            }
         }
 
         return [
-            "view" => VIEW_DIR."security/login.php",
-           
+            "view" => VIEW_DIR . "security/login.php",
+
         ];
-    
     }
 
-    public function logout(){
-        unset($_SESSION["user"]) ;
-        
+    public function logout()
+    {
+        unset($_SESSION["user"]);
+
         return [
-            "view" => VIEW_DIR."security/login.php",
-           
+            "view" => VIEW_DIR . "security/login.php",
+
         ];
-    
     }
 
-   
-
-
-
-
-// --on soumet le formulaire
-// --on vérifie que les filtres du formulaires sont valides
-// --on stocke dans une variable le fait qu'on retrouve le mot de passe de la personne dont l'email est passé en paramètre (retrievePassword)
-// --si on retrouve, on récupère le mot de passe haché
-// --on retrouve l'utilisateur dont l'email est passé en paramètre
-// --on vérifie si le hash récupéré en BDD correspond au hash du mot de passe du formulaire (password_verify)
-// --si ça marche --> on stocke le user en session
 
 
 
 
 
-public function closeTopic(){
-    $id=(isset($_GET['id'])) ? $_GET['id'] : null ; 
-
-    $topicManager  = new TopicManager(); 
-    
-
-    //on fais passer l'id du topic concerne
-    $topicManager->closeTopic($id); 
-
-    $this->redirectTo('forum','listPosts',$id) ;
+    // --on soumet le formulaire
+    // --on vérifie que les filtres du formulaires sont valides
+    // --on stocke dans une variable le fait qu'on retrouve le mot de passe de la personne dont l'email est passé en paramètre (retrievePassword)
+    // --si on retrouve, on récupère le mot de passe haché
+    // --on retrouve l'utilisateur dont l'email est passé en paramètre
+    // --on vérifie si le hash récupéré en BDD correspond au hash du mot de passe du formulaire (password_verify)
+    // --si ça marche --> on stocke le user en session
 
 
-}
 
 
-public function findTopicsByUser(){
-       
-    $id=(isset($_GET['id'])) ? $_GET['id'] : null ; 
 
-    $topicManager = new TopicManager();
-  
+    public function closeTopic()
+    {
+        $id = (isset($_GET['id'])) ? $_GET['id'] : null;
+        $categorieId = (isset($_GET['idCateg'])) ? $_GET['idCateg'] : null;
 
-    return [
-        "view" => VIEW_DIR."security/profile.php",
-        "data" => [
-            "topics" => $topicManager->findTopicsByUser($id)
-        ] 
+        $topicManager  = new TopicManager();
 
-     
-    ];
- 
-   
-}
 
-public function AfficherProfileUtilisateur(){
-    $id=(isset($_GET['id'])) ? $_GET['id'] : null ;
-  
-    $auteurManager = new auteurManager();
-    return [
-        "view" => VIEW_DIR."security/viewProfile.php",
-        "data" => [
-            "details" => $auteurManager->profileUtilisateur($id)
-            ] 
-            
-            
-        ];
+        //on fais passer l'id du topic concerne
+        $topicManager->closeTopic($id);
+
+        $this->redirectTo('forum', 'listTopics',$categorieId );
+    }
+    public function openTopic()
+    {
+        $id = (isset($_GET['id'])) ? $_GET['id'] : null;
+        $categorieId = (isset($_GET['idCateg'])) ? $_GET['idCateg'] : null;
+
+        $topicManager  = new TopicManager();
+
+
+        //on fais passer l'id du topic concerne
+        $topicManager->openTopic($id);
+
+        $this->redirectTo('forum', 'listTopics',$categorieId );
+    }
+
+    public function supprimerUnTopic()
+    {
+        $topicId = (isset($_GET['id'])) ? $_GET['id'] : null;
+        $categorieId = (isset($_GET['idCateg'])) ? $_GET['idCateg'] : null;
+        $postManager = new PostManager();
+        $topicManager  = new TopicManager();
         
-      
+        $postManager ->suppriemerPostTopic($topicId) ;
+        $topicManager->delete($topicId);
 
-}
+        $this->redirectTo('forum','listTopics', $categorieId );
+    }
 
+
+
+
+    public function findTopicsByUser()
+    {
+
+        $id = (isset($_GET['id'])) ? $_GET['id'] : null;
+
+        $topicManager = new TopicManager();
+
+
+        return [
+            "view" => VIEW_DIR . "security/profile.php",
+            "data" => [
+                "topics" => $topicManager->findTopicsByUser($id)
+            ]
+
+
+        ];
+    }
+
+
+    public function AfficherProfileUtilisateur()
+    {
+        $id = (isset($_GET['id'])) ? $_GET['id'] : null;
+
+        $auteurManager = new auteurManager();
+        return [
+            "view" => VIEW_DIR . "security/viewProfile.php",
+            "data" => [
+                "details" => $auteurManager->profileUtilisateur($id)
+            ]
+
+
+        ];
+    }
 }
