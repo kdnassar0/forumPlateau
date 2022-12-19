@@ -40,6 +40,7 @@ foreach ($nomCategorie as $nom) {
         
             <?php
         //   ici on compare l'id de ce utilisateur avec l'id de l'auteur de ce topic 
+        if(App\Session::getUser()){
           if (App\Session::isAdmin() || App\Session::getUser()->getId() == $topic->getAuteur()->getId()  )
            {
 
@@ -57,10 +58,8 @@ foreach ($nomCategorie as $nom) {
                 }
 
                 ?>           
-                    <?php
-                    
-                    if (App\Session::isAdmin() || App\Session::getUser()->getId() == $topic->getAuteur()->getId()  )
-                     { ?>
+                   
+                   
 
 
                         <p><a href="index.php?ctrl=security&action=supprimerUnTopic&id=<?= $topic->getId() ?>&idCateg=<?= $topic->getCategorie()?>">supprimer</a></p>
@@ -69,6 +68,7 @@ foreach ($nomCategorie as $nom) {
                     <?php
                     
                     }
+                    
 
                   
 
@@ -80,9 +80,10 @@ foreach ($nomCategorie as $nom) {
         <?php
            
             }
+
            ?> </div><?php
+        
         }
-      
     } else {
         ?>
         <div class="vide">
