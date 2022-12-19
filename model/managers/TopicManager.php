@@ -46,6 +46,7 @@ class TopicManager extends Manager
 
     }  
 
+   
 
     public function closeTopic($id){
         $sql  = "UPDATE ".$this->tableName."

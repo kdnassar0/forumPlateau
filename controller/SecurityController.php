@@ -236,6 +236,19 @@ class SecurityController extends AbstractController implements ControllerInterfa
         ];
     }
 
+    // public function supprimerTopicUtilisateur($id){
+    //     $id = (isset($_GET['id'])) ? $_GET['id'] : null;
+    //     $auteurManager = new AuteurManager() ; 
+
+    //     $auteurManager->supprimerTopicUtilisateur($id) ;
+
+    //     $this->redirectTo('forum','listTopics',$id) ; 
+
+
+
+    // }
+
+ 
 
     public function AfficherProfileUtilisateur()
     {

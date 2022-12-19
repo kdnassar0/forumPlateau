@@ -34,6 +34,8 @@ class AuteurManager extends Manager
         );
     }
 
+   
+
 
     public function findOneByUser($username)
     {

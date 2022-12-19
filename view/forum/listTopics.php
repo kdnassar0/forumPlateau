@@ -19,16 +19,17 @@ foreach ($nomCategorie as $nom) {
 
 <h1>liste topics</h1>
 <?php if (!App\Session::getUser()) { ?>
-    <h2>Pensez-vous à connecter si vous voulez ajouter un topic : </h2>
+    <h2>Pensez à vous connecter si vous voulez ajouter un topic : </h2>
 <?php } ?>
 
 
 
 
-
 <?php if ($topics) {
-
+   
+   
     foreach ($topics as $topic) {
+       
 ?> <div class='listTopic'> <?php ?>
         
        
@@ -38,7 +39,10 @@ foreach ($nomCategorie as $nom) {
        
         
             <?php
-            if (App\Session::isAdmin()) {
+        //   ici on compare l'id de ce utilisateur avec l'id de l'auteur de ce topic 
+          if (App\Session::isAdmin() || App\Session::getUser()->getId() == $topic->getAuteur()->getId()  )
+           {
+
                 if ($topic->getVerroier() == 0) {
 
             ?><p><a href="index.php?ctrl=security&action=closeTopic&id=<?= $topic->getId() ?>&idCateg=<?= $topic->getCategorie()?>">close</a></p>
@@ -54,21 +58,27 @@ foreach ($nomCategorie as $nom) {
 
                 ?>           
                     <?php
-                    if (App\Session::isAdmin()) { ?>
+                    
+                    if (App\Session::isAdmin() || App\Session::getUser()->getId() == $topic->getAuteur()->getId()  )
+                     { ?>
+
 
                         <p><a href="index.php?ctrl=security&action=supprimerUnTopic&id=<?= $topic->getId() ?>&idCateg=<?= $topic->getCategorie()?>">supprimer</a></p>
 
-                        </form>
+                       
                     <?php
+                    
                     }
 
+                  
+
                     ?>
-               
+            
        
 
-
+   </form>
         <?php
-
+           
             }
            ?> </div><?php
         }
@@ -96,7 +106,7 @@ foreach ($nomCategorie as $nom) {
                 <label>
     
                     <span>Titre</span> <br>
-                    <input type="text" name="name"><br><br>
+                    <input type="text" name="name" ><br><br>
     
                 </label>
                 <label class="zoneMessage">
